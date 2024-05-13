@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { Button, ButtonLogin, ButtonRegister } from "../button/button";
-import { InputDefault, InputPassword } from "../input/input";
-import { FcUndo } from "react-icons/fc";
-import { FiCheckSquare, FiSquare } from "react-icons/fi";
-import "./form.css";
-import { AiOutlineClose } from "react-icons/ai";
-import userService from "../../services/user";
-import { useNavigate } from "react-router-dom";
+import { Button, ButtonLogin, ButtonRegister } from '../button/button';
+import { InputDefault, InputPassword } from '../input/input';
+import { FcUndo } from 'react-icons/fc';
+import { FiCheckSquare, FiSquare } from 'react-icons/fi';
+import './form.css';
+import { AiOutlineClose } from 'react-icons/ai';
+import userService from '../../services/user';
+import { useNavigate } from 'react-router-dom';
 
 export const FormLogin: React.FC<{
   handleChange: (text: boolean) => void;
@@ -15,28 +15,28 @@ export const FormLogin: React.FC<{
   handleauth: () => void;
   handleLogin: () => void;
 }> = ({ handleauth, handleChange, handleRegister, handleLogin }) => {
-  const [InputValue, setInputValue] = useState("");
+  const [InputValue, setInputValue] = useState('');
   const [InputState, setInputState] = useState(false);
 
-  const [passwordValue, setPasswordValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState('');
   const [PasswordState, setPasswordState] = useState(false);
   const navigate = useNavigate();
 
   const submitClick = async (emailValue: string, passwordValue: string) => {
-    if (emailValue === "" || passwordValue === "") {
-      alert("Password o email en blanco");
+    if (emailValue === '' || passwordValue === '') {
+      alert('Password o email en blanco');
     } else {
-      const result = await userService.loginUser(emailValue, passwordValue);
+      const result = await userService.login(emailValue, passwordValue, 'CLI_FRONTEND');
       if (!result.success) {
         console.log(result);
         alert(result.message);
       } else {
-        localStorage.setItem("token", result.data.token);
-        alert("Usuario inició sesión correctamente");
+        localStorage.setItem('token', result.data.token);
+        alert('Usuario inició sesión correctamente');
         console.log(result);
         handleChange(false);
         handleLogin();
-        navigate("/brisasMarinas/Usuario");
+        navigate('/brisasMarinas/Usuario');
       }
     }
   };
@@ -50,11 +50,7 @@ export const FormLogin: React.FC<{
     <div className="app-container-login">
       <div className="app-container-tittleReturn">
         <div className="app-container-login-return">
-          <FcUndo
-            size={40}
-            title="Cerrar Login"
-            onClick={() => handleChange(false)}
-          />
+          <FcUndo size={40} title="Cerrar Login" onClick={() => handleChange(false)} />
         </div>
 
         <div className="app-container-title">
@@ -108,25 +104,25 @@ export const FormRegister: React.FC<{
   registerState: boolean;
   handleRegister: (text: boolean) => void;
 }> = ({ state, handleChange, registerState, handleRegister }) => {
-  const [nameValue, setNameValue] = useState("");
+  const [nameValue, setNameValue] = useState('');
   const [nametState, setNameState] = useState(false);
 
-  const [lastNameValue, setLastNameValue] = useState("");
+  const [lastNameValue, setLastNameValue] = useState('');
   const [lastNameState, setLastNameState] = useState(false);
 
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState('');
   const [genderState, setGenderState] = useState(false);
 
-  const [emailValue, setEmailValue] = useState("");
+  const [emailValue, setEmailValue] = useState('');
   const [emailState, setEmailState] = useState(false);
 
-  const [dniValue, setDniValue] = useState("");
+  const [dniValue, setDniValue] = useState('');
   const [dniState, setDniState] = useState(false);
 
-  const [phoneValue, setPhoneValue] = useState("");
+  const [phoneValue, setPhoneValue] = useState('');
   const [phoneState, setPhoneState] = useState(false);
 
-  const [passwordValue, setPasswordValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState('');
   const [passwordState, setPasswordState] = useState(false);
 
   const [terminoStatue, seterminosState] = useState(false);
@@ -140,10 +136,10 @@ export const FormRegister: React.FC<{
   };
 
   const eventoGenero = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    if (event.target.value === "Masculino") {
-      setGender("M");
+    if (event.target.value === 'Masculino') {
+      setGender('M');
     } else {
-      setGender("F");
+      setGender('F');
     }
     setGenderState(true);
   };
@@ -161,18 +157,18 @@ export const FormRegister: React.FC<{
         nameValue,
         emailValue,
         passwordValue,
-        "CLI",
+        'CLI',
         phoneValue,
         gender,
         dniValue,
         lastNameValue
       );
       console.log(result);
-      alert("Registro exitoso");
+      alert('Registro exitoso');
       handleRegister(false);
       handleChange(true);
     } else {
-      alert("campos vacios");
+      alert('campos vacios');
     }
   };
 
@@ -197,11 +193,7 @@ export const FormRegister: React.FC<{
           <h1>REGISTRARSE</h1>
         </div>
         <div className="app-container-register-exit">
-          <AiOutlineClose
-            size={50}
-            title="Cerrar Registro"
-            onClick={volverHome}
-          />
+          <AiOutlineClose size={50} title="Cerrar Registro" onClick={volverHome} />
         </div>
       </div>
 
@@ -246,9 +238,7 @@ export const FormRegister: React.FC<{
               label="Correo Electrónico"
               placeholder="Ejemplo : alguien@gmail.com"
               leyendaError="Debe seguir la estructura: alguien@gmail.com"
-              expresionRegular={
-                /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
-              }
+              expresionRegular={/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/}
             />
           </div>
           <div className="dni-right">
@@ -268,24 +258,24 @@ export const FormRegister: React.FC<{
 
         <div className="app-container-phone-gender">
           <div className="phone-left">
-          <InputDefault
-            estado={phoneState}
-            campo={phoneValue}
-            cambiarEstado={(txt: boolean) => setPhoneState(txt)}
-            cambiarCampo={(txt: string) => setPhoneValue(txt)}
-            tipo="text"
-            label="Número de celular"
-            placeholder="Debe contener 9 caracteres numéricos"
-            leyendaError="Debe contener 9 números"
-            expresionRegular={/^\d{9}$/}
-          />
+            <InputDefault
+              estado={phoneState}
+              campo={phoneValue}
+              cambiarEstado={(txt: boolean) => setPhoneState(txt)}
+              cambiarCampo={(txt: string) => setPhoneValue(txt)}
+              tipo="text"
+              label="Número de celular"
+              placeholder="Debe contener 9 caracteres numéricos"
+              leyendaError="Debe contener 9 números"
+              expresionRegular={/^\d{9}$/}
+            />
           </div>
           <div className="gender-right">
             <label>Genero</label>
             <div className="select-gender">
-            <select className="categoria" name="Genero">
-              <option>Masculino</option> <option>Femenino</option>
-            </select>
+              <select className="categoria" name="Genero">
+                <option>Masculino</option> <option>Femenino</option>
+              </select>
             </div>
           </div>
         </div>
@@ -317,10 +307,7 @@ export const FormRegister: React.FC<{
         </div>
 
         <div className="app-container-register-CrearCuenta">
-          <Button
-            placeholder="Registrar Usuario"
-            handleClick={() => CreateUser()}
-          />
+          <Button placeholder="Registrar Usuario" handleClick={() => CreateUser()} />
         </div>
       </div>
     </div>
@@ -338,29 +325,27 @@ export const FormComprar: React.FC<{}> = ({}) => {
     terminos: boolean
   ) => {
     if (name === false) {
-      alert("Nombre no valido, revisar el error indicado.");
+      alert('Nombre no valido, revisar el error indicado.');
     }
     if (lastname === false) {
-      alert("Apellido no valido, revisar el error indicado.");
+      alert('Apellido no valido, revisar el error indicado.');
     }
     if (dni === false) {
-      alert("Número de DNI no valido, revisar el error indicado.");
+      alert('Número de DNI no valido, revisar el error indicado.');
     }
     if (phone === false) {
-      alert("Número de celular no valido, revisar el error indicado.");
+      alert('Número de celular no valido, revisar el error indicado.');
     }
     if (email === false) {
-      alert("Correo no valido, revisar el error indicado.");
+      alert('Correo no valido, revisar el error indicado.');
     }
 
     if (password === false) {
-      alert("Contraseña no valida, revisar el error indicado.");
+      alert('Contraseña no valida, revisar el error indicado.');
     }
 
     if (terminos === false) {
-      alert(
-        "Terminos y condiciones no aceptados, por favor verifique la casilla."
-      );
+      alert('Terminos y condiciones no aceptados, por favor verifique la casilla.');
     }
 
     if (
@@ -372,7 +357,7 @@ export const FormComprar: React.FC<{}> = ({}) => {
       dni === true &&
       terminos === true
     ) {
-      alert("Usuario registrado correctamente");
+      alert('Usuario registrado correctamente');
     }
   };
 

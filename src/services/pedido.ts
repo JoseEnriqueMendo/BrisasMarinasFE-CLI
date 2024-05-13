@@ -1,51 +1,37 @@
-import axios from "axios";
+import axios from 'axios';
 
-
-
-const BASE_URL = "https://kpl1jddpz7.execute-api.us-east-1.amazonaws.com";
+const BASE_URL = 'https://brisasmarinasbe.onrender.com';
 
 const pedidoService = {
+  create: async (
+    cantidad: number,
+    subtotal: number,
+    id_platillo: number,
+    id_factura: number
+  ) => {
+    const requestData = {
+      cantidad: cantidad,
+      subtotal: subtotal,
+      id_platillo: id_platillo,
+      id_factura: id_factura,
+    };
 
-    create: async (
-        cantidad: number,
-        subtotal: number,
-        id_platillo: number,
-        id_factura: number,
-      ) => {
-        try {
-          const { data } = await axios({
-            url: `${BASE_URL}/pedido/create`,
-            method: "post",
-            data: {
-                cantidad : cantidad,
-                subtotal : subtotal,
-                id_platillo : id_platillo,
-                id_factura : id_factura
-            },
-          });
-          return data;
-        } catch (error) {
-          return null;
-        }
-      },
+    try {
+      const { data } = await axios.post(`${BASE_URL}/pedido/create`, requestData);
+      return data;
+    } catch (error) {
+      return null;
+    }
+  },
 
-      listPorUsuario: async (id: number) => {
-        try {
-          const { data } = await axios({
-            url: `${BASE_URL}/pedido/selectPedidoPorUsuario`,
-            method: "post",
-            data: {
-              id: id,
-            },
-          });
-          return data.data;
-        } catch (error) {
-          return null;
-        }
-      },
-
-
+  listPorUsuario: async (id: number) => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/pedido/selectPedidoPorUsuario/${id}`);
+      return data.data;
+    } catch (error) {
+      return null;
+    }
+  },
 };
-
 
 export default pedidoService;

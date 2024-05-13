@@ -1,27 +1,12 @@
-import axios from "axios";
-import { CategoryData } from "../entities/category";
+import axios from 'axios';
+import { CategoryData } from '../entities/category';
 
-const BASE_URL = "https://kpl1jddpz7.execute-api.us-east-1.amazonaws.com";
+const BASE_URL = 'https://brisasmarinasbe.onrender.com';
 
 const categoryService = {
   list: async (): Promise<CategoryData[] | null> => {
     try {
       const { data } = await axios.get(`${BASE_URL}/category/all`);
-      return data.data;
-    } catch (error) {
-      return null;
-    }
-  },
-
-  QuantList: async (num: number): Promise<CategoryData[] | null> => {
-    try {
-      const { data } = await axios({
-        url: `${BASE_URL}/category/listPorCantidad`,
-        method: "post",
-        data: {
-          num: num,
-        },
-      });
       return data.data;
     } catch (error) {
       return null;
@@ -37,49 +22,48 @@ const categoryService = {
     }
   },
 
-  create: async (name: string, description: string, url: string) => {
+  QuantList: async (num: number): Promise<CategoryData[] | null> => {
     try {
-      const { data } = await axios({
-        url: `${BASE_URL}/category/create`,
-        method: "post",
-        data: {
-          name: name,
-          description: description,
-          url: url,
-        },
-      });
-      return data;
+      const { data } = await axios.get(`${BASE_URL}/category/listPorCantidad/${num}`);
+      return data.data;
     } catch (error) {
       return null;
     }
   },
-  showID: async (name: string) => {
+
+  create: async (name: string, description: string, url: string) => {
+    const requestData = {
+      name,
+      description,
+      url,
+    };
+
     try {
-      const { data } = await axios({
-        url: `${BASE_URL}/category/getID`,
-        method: "post",
-        data: {
-          name: name,
-        },
-      });
+      const { data } = await axios.post(`${BASE_URL}/category/create`, requestData);
       return data;
     } catch (error) {
       return null;
     }
   },
 
-  edit: async (name: string, description: string, url: string, id: number) => {
+  showID: async (name: string) => {
     try {
-      const { data } = await axios({
-        url: `${BASE_URL}/category/edit`,
-        method: "post",
-        data: {
-          name: name,
-          description: description,
-          url: url,
-          id: id,
-        },
-      });
+      const { data } = await axios.get(`${BASE_URL}/category/getID/${name}`);
+      return data;
+    } catch (error) {
+      return null;
+    }
+  },
+  edit: async (name: string, description: string, url: string, id: number) => {
+    const requestData = {
+      name,
+      description,
+      url,
+      id,
+    };
+
+    try {
+      const { data } = await axios.put(`${BASE_URL}/category/edit`, requestData);
       return data;
     } catch (error) {
       return null;
@@ -87,13 +71,11 @@ const categoryService = {
   },
 
   delete: async (id: number) => {
+    const requestData = { id };
+
     try {
-      const { data } = await axios({
-        url: `${BASE_URL}/category/delete`,
-        method: "post",
-        data: {
-          id: id,
-        },
+      const { data } = await axios.delete(`${BASE_URL}/category/delete`, {
+        data: requestData,
       });
       return data;
     } catch (error) {
@@ -103,13 +85,7 @@ const categoryService = {
 
   getName: async (id: number) => {
     try {
-      const { data } = await axios({
-        url: `${BASE_URL}/category/getname`,
-        method: "post",
-        data: {
-          id: id,
-        },
-      });
+      const { data } = await axios.get(`${BASE_URL}/category/getname/${id}`);
       return data;
     } catch (error) {
       return null;

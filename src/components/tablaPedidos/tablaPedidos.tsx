@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { pedidoHistorial } from "../../entities/pedido";
-import { UserDefault } from "../../entities/User";
-import pedidoService from "../../services/pedido";
-import userService from "../../services/user";
-import "./tablaPedidos.css"
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { pedidoHistorial } from '../../entities/pedido';
+import { UserDefault } from '../../entities/User';
+import pedidoService from '../../services/pedido';
+import userService from '../../services/user';
+import './tablaPedidos.css';
 
 export const TablaPedidos: React.FC<{}> = () => {
   const [usuario, setusuario] = useState<UserDefault>();
@@ -15,7 +15,7 @@ export const TablaPedidos: React.FC<{}> = () => {
   }, []);
 
   const serviceUsuario = async () => {
-    const result = await userService.showName();
+    const result = await userService.getUser();
     setusuario(result.data);
     console.log(result);
   };
@@ -33,8 +33,6 @@ export const TablaPedidos: React.FC<{}> = () => {
   }, [usuario]);
 
   useEffect(() => {}, [history]);
-
-  
 
   return (
     <div className="tabla-inicio">
@@ -63,7 +61,7 @@ export const TablaPedidos: React.FC<{}> = () => {
                       <td className="td1">{data.nombre}</td>
                       <td className="td1">{data.precio}</td>
                       <td className="td1">{data.cantidad}</td>
-                      <td className="td1">{data.precio*data.cantidad}</td>
+                      <td className="td1">{data.precio * data.cantidad}</td>
                       <td className="td1">{data.fecha}</td>
                     </tr>
                   );

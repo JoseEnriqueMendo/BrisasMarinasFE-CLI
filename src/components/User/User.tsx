@@ -1,28 +1,28 @@
-import React, { useEffect, useState, Fragment } from "react";
-import { useLocation, useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { UserDefault } from "../../entities/User";
-import { User } from "../../pages/user/user";
-import userService from "../../services/user";
-import { Button } from "../button/button";
-import { InputDefault } from "../input/input";
-import "./User.css";
+import React, { useEffect, useState, Fragment } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { UserDefault } from '../../entities/User';
+import { User } from '../../pages/user/user';
+import userService from '../../services/user';
+import { Button } from '../button/button';
+import { InputDefault } from '../input/input';
+import './User.css';
 
 export const UserDetails: React.FC<{}> = ({}) => {
   const navigate = useNavigate();
 
   const [Usuario, setUsuario] = useState<UserDefault>();
-  const [gender, setgender] = useState("");
+  const [gender, setgender] = useState('');
 
   const serviceUsuario = async () => {
-    const result = await userService.showName();
+    const result = await userService.getUser();
     setUsuario(result.data);
     console.log(result.data);
   };
 
   const generoCompleto = () => {
-    if (Usuario?.gender === "F") setgender("Femenino");
-    else setgender("Masculino");
+    if (Usuario?.gender === 'F') setgender('Femenino');
+    else setgender('Masculino');
   };
 
   useEffect(() => {
@@ -69,8 +69,8 @@ export const UserDetails: React.FC<{}> = ({}) => {
 
         <div className="button">
           <Button
-            handleClick={() => navigate("/brisasMarinas/usuario/edit")}
-            placeholder={"Editar Información"}
+            handleClick={() => navigate('/brisasMarinas/usuario/edit')}
+            placeholder={'Editar Información'}
           ></Button>
         </div>
       </div>
@@ -82,25 +82,25 @@ export const EditUser: React.FC<{}> = ({}) => {
   const [Usuario, setUsuario] = useState<UserDefault>();
   const navigate = useNavigate();
   const [id, setid] = useState<number | undefined>();
-  const [name, setName] = useState<string | undefined>("");
+  const [name, setName] = useState<string | undefined>('');
   const [nameState, setNameState] = useState(true);
-  const [email, setemail] = useState<string | undefined>("");
+  const [email, setemail] = useState<string | undefined>('');
   const [emailState, setemailState] = useState(true);
-  const [password, setpassword] = useState<string | undefined>("");
+  const [password, setpassword] = useState<string | undefined>('');
   const [passwordState, setpasswordState] = useState(true);
-  const [idRol, setidRol] = useState<string | undefined>("");
+  const [idRol, setidRol] = useState<string | undefined>('');
   const [idRolState, setidRolState] = useState(true);
-  const [lastname, setlastname] = useState<string | undefined>("");
+  const [lastname, setlastname] = useState<string | undefined>('');
   const [lastnameState, setlastnameState] = useState(true);
-  const [phone, setphone] = useState<string | undefined>("");
+  const [phone, setphone] = useState<string | undefined>('');
   const [phoneState, setphoneState] = useState(true);
-  const [dni, setdni] = useState<string | undefined>("");
+  const [dni, setdni] = useState<string | undefined>('');
   const [dniState, setdniState] = useState(true);
-  const [genero, setgenero] = useState<string | undefined>("");
+  const [genero, setgenero] = useState<string | undefined>('');
   const [generoState, setgeneroState] = useState(true);
 
   const serviceUsuario = async () => {
-    const result = await userService.showName();
+    const result = await userService.getUser();
     setUsuario(result.data);
     console.log(result.data);
   };
@@ -127,19 +127,19 @@ export const EditUser: React.FC<{}> = ({}) => {
   }, [Usuario]);
 
   const evento = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    if (event.target.value === "Cliente") {
-      setidRol("CLI");
+    if (event.target.value === 'Cliente') {
+      setidRol('CLI');
     } else {
-      setidRol("ADM");
+      setidRol('ADM');
     }
     setidRolState(true);
   };
 
   const eventoGenero = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    if (event.target.value === "Masculino") {
-      setgenero("M");
+    if (event.target.value === 'Masculino') {
+      setgenero('M');
     } else {
-      setgenero("F");
+      setgenero('F');
     }
     setgeneroState(true);
   };
@@ -163,20 +163,13 @@ export const EditUser: React.FC<{}> = ({}) => {
         lastname !== undefined &&
         id !== undefined
       ) {
-        const result = await userService.edit(
-          name,
-          lastname,
-          email,
-          dni,
-          phone,
-          id
-        );
+        const result = await userService.edit(name, lastname, email, dni, phone, id);
         console.log(result);
-        alert("Edición exitosa");
-        navigate("/brisasMarinas/usuario/details");
+        alert('Edición exitosa');
+        navigate('/brisasMarinas/usuario/details');
       }
     } else {
-      alert("campos vacios");
+      alert('campos vacios');
     }
   };
 
@@ -251,9 +244,7 @@ export const EditUser: React.FC<{}> = ({}) => {
               label="Email"
               placeholder="Ejemplo: zzz@example.com"
               leyendaError="Debe seguir el formato"
-              expresionRegular={
-                /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
-              }
+              expresionRegular={/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/}
             />
           </div>
           <div className="btn-editar">

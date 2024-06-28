@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { FaCheckCircle } from "react-icons/fa";
-import { AiFillCloseCircle } from "react-icons/ai";
-import { FiCheckSquare, FiSquare } from "react-icons/fi";
+import React, { useState } from 'react';
+import { FaCheckCircle } from 'react-icons/fa';
+import { AiFillCloseCircle } from 'react-icons/ai';
+import { FiCheckSquare, FiSquare } from 'react-icons/fi';
 
-import "./input.css";
+import './input.css';
 
 export const InputDefault: React.FC<{
   estado: boolean;
@@ -37,7 +37,7 @@ export const InputDefault: React.FC<{
   };
 
   const MostrarIcono = () => {
-    if (campo !== "") {
+    if (campo !== '') {
       if (estado === true) {
         return <FaCheckCircle size={25} className="icon-check" />;
       } else {
@@ -53,7 +53,7 @@ export const InputDefault: React.FC<{
   };
 
   const MostrarError = () => {
-    if (campo !== "") {
+    if (campo !== '') {
       if (estado === false) {
         return <label>{leyendaError}</label>;
       } else {
@@ -76,6 +76,7 @@ export const InputDefault: React.FC<{
             onChange={(event) => cambiarCampo(event.target.value)}
             onKeyUp={validacion}
             onBlur={validacion}
+            className="app-container-input-input"
           />
           <div className="app-container-icon">{MostrarIcono()}</div>
         </div>
@@ -125,7 +126,7 @@ export const InputPassword: React.FC<{
   };
 
   const MostrarIcono = () => {
-    if (campo !== "") {
+    if (campo !== '') {
       if (estado === true) {
         return <FaCheckCircle size={25} className="icon-check" />;
       } else {
@@ -141,7 +142,7 @@ export const InputPassword: React.FC<{
   };
 
   const MostrarError = () => {
-    if (campo !== "") {
+    if (campo !== '') {
       if (estado === false) {
         return <label>{leyendaError}</label>;
       } else {
@@ -158,7 +159,7 @@ export const InputPassword: React.FC<{
         </div>
         <div className="app-container-inputAndIcon">
           <input
-            type={clickedIn ? "text" : "password"}
+            type={clickedIn ? 'text' : 'password'}
             placeholder={placeholder}
             value={campo}
             onChange={(event) => cambiarCampo(event.target.value)}
@@ -213,7 +214,7 @@ export const InputNumber: React.FC<{
   };
 
   const MostrarIcono = () => {
-    if (campo !== "") {
+    if (campo !== '') {
       if (estado === true) {
         return <FaCheckCircle size={25} className="icon-check" />;
       } else {
@@ -229,7 +230,7 @@ export const InputNumber: React.FC<{
   };
 
   const MostrarError = () => {
-    if (campo !== "") {
+    if (campo !== '') {
       if (estado === false) {
         return <label>{leyendaError}</label>;
       } else {

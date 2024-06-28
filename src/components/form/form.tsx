@@ -110,8 +110,8 @@ export const FormRegister: React.FC<{
   const [lastNameValue, setLastNameValue] = useState('');
   const [lastNameState, setLastNameState] = useState(false);
 
-  const [gender, setGender] = useState('');
-  const [genderState, setGenderState] = useState(false);
+  const [gender, setGender] = useState('M');
+  const [genderState, setGenderState] = useState(true);
 
   const [emailValue, setEmailValue] = useState('');
   const [emailState, setEmailState] = useState(false);
@@ -136,11 +136,7 @@ export const FormRegister: React.FC<{
   };
 
   const eventoGenero = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    if (event.target.value === 'Masculino') {
-      setGender('M');
-    } else {
-      setGender('F');
-    }
+    setGender(event.target.value[0]);
     setGenderState(true);
   };
 
@@ -273,7 +269,7 @@ export const FormRegister: React.FC<{
           <div className="gender-right">
             <label>Genero</label>
             <div className="select-gender">
-              <select className="categoria" name="Genero">
+              <select className="categoria" name="Genero" onChange={eventoGenero}>
                 <option>Masculino</option> <option>Femenino</option>
               </select>
             </div>

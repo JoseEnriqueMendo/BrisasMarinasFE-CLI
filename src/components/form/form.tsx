@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Button, ButtonLogin, ButtonRegister } from '../button/button';
+import { Button } from '../button/button';
 import { InputDefault, InputPassword } from '../input/input';
 import { FcUndo } from 'react-icons/fc';
 import { FiCheckSquare, FiSquare } from 'react-icons/fi';

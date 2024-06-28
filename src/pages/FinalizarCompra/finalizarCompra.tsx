@@ -3,7 +3,6 @@ import { NavBarDefault } from '../../components/navBar/navBar';
 import { ComprarHeader } from '../../components/header/header';
 import { HiIdentification } from 'react-icons/hi';
 import { Footer } from '../../components/footer/footer';
-
 import './finalizarComprar.css';
 import { InputDefault, InputPassword } from '../../components/input/input';
 import { ButtonComprar, ButtonDescuento } from '../../components/button/button';
@@ -15,6 +14,7 @@ import userService from '../../services/user';
 import facturaService from '../../services/factura';
 import { useNavigate } from 'react-router-dom';
 import pedidoService from '../../services/pedido';
+
 export const FinalizarCompra: React.FC<{
   userState: boolean;
   handleauth: () => void;
@@ -49,7 +49,6 @@ export const FinalizarCompra: React.FC<{
   const serviceUsuario = async () => {
     const result = await userService.getUser();
     setUsuario(result.data);
-    console.log(result.data);
   };
 
   const CuponLogic = (codigo: boolean) => {
@@ -85,9 +84,7 @@ export const FinalizarCompra: React.FC<{
     id_platillo: number,
     cantidad: number
   ) => {
-    const result = await pedidoService.create(cantidad, subtotal, id_platillo, id_factura);
-
-    console.log(result.data);
+    await pedidoService.create(cantidad, subtotal, id_platillo, id_factura);
   };
 
   const deleteAllItems = () => {
@@ -97,7 +94,6 @@ export const FinalizarCompra: React.FC<{
   const serviceDishes = async () => {
     const result = await dishesService.listQuant(11);
     setDisheslist(result);
-    console.log(result);
   };
 
   const total = () => {
@@ -149,7 +145,6 @@ export const FinalizarCompra: React.FC<{
           retornarFecha(),
           Usuario?.id
         );
-        console.log(result);
         setidFactura(result.data.id);
         alert('Compra exitosa');
       } else {
@@ -166,12 +161,11 @@ export const FinalizarCompra: React.FC<{
   }, []);
 
   useEffect(() => {
-    console.log(idFactura);
     if (idFactura !== 0 && idFactura !== undefined) {
       guardarPedidos();
       deleteAllItems();
       navigate('/brisasMarinas');
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idFactura]);
 
   return (

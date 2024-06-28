@@ -1,9 +1,8 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { Fragment } from 'react';
 
-import "./cards.css";
-import Card from "../card/card";
-import books from "../../models/books.json";
-import { DishesCard } from "../dataCard/dataCard";
+import './cards.css';
+
+import { DishesCard } from '../dataCard/dataCard';
 
 export interface Book {
   id: number;

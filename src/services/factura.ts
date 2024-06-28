@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { FacturayData } from '../entities/factura';
 
 const BASE_URL = 'https://brisasmarinasbe.onrender.com';
 

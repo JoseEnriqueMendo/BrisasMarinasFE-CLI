@@ -1,7 +1,6 @@
-import { NavBarDefault } from "../../components/navBar/navBar";
-import { Footer } from "../../components/footer/footer";
-import { HomeAdmin } from "../../components/admin/homeAdmin/HomeAdmin";
-/* import books from "../../models/books.json"; */
+import { NavBarDefault } from '../../components/navBar/navBar';
+import { Footer } from '../../components/footer/footer';
+import { HomeAdmin } from '../../components/admin/homeAdmin/HomeAdmin';
 
 export const AdminPage: React.FC<{
   userState: boolean;

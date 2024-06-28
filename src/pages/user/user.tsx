@@ -1,21 +1,15 @@
-import React, { useState } from "react";
-
-import "./user.css";
-
-import { NavBarDefault } from "../../components/navBar/navBar";
-import { Slide } from "../../components/slides/slide";
-import { Footer } from "../../components/footer/footer";
-import { EditUser, UserDetails } from "../../components/User/User";
-import { UserDefault } from "../../entities/User";
-import { TablaPedidos } from "../../components/tablaPedidos/tablaPedidos";
+import React from 'react';
+import './user.css';
+import { NavBarDefault } from '../../components/navBar/navBar';
+import { Footer } from '../../components/footer/footer';
+import { EditUser, UserDetails } from '../../components/User/User';
+import { TablaPedidos } from '../../components/tablaPedidos/tablaPedidos';
 
 export const User: React.FC<{
   userState: boolean;
   handleauth: () => void;
   handleLogin: () => void;
 }> = ({ userState, handleauth, handleLogin }) => {
-  const [loginState, setLoginState] = useState(false);
-
   return (
     <div className="app-container-home">
       <NavBarDefault
@@ -24,7 +18,6 @@ export const User: React.FC<{
         handleLogin={() => handleLogin()}
       />
       <UserDetails />
-
       <Footer></Footer>
     </div>
   );
@@ -49,9 +42,6 @@ export const UserEdit: React.FC<{
   );
 };
 
-
-
-
 export const UserHistory: React.FC<{
   userState: boolean;
   handleauth: () => void;
@@ -64,10 +54,8 @@ export const UserHistory: React.FC<{
         handleauth={() => handleauth()}
         handleLogin={() => handleLogin()}
       />
-      <TablaPedidos/>
-
+      <TablaPedidos />
       <Footer></Footer>
     </div>
   );
 };
-

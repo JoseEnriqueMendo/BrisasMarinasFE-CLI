@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Footer } from "../../components/footer/footer";
-import { NavBarDefault } from "../../components/navBar/navBar";
-import Order from "../../components/order/order";
-import books from "../../models/books.json";
+import React from 'react';
+import { Footer } from '../../components/footer/footer';
+import { NavBarDefault } from '../../components/navBar/navBar';
+import Order from '../../components/order/order';
+import books from '../../models/books.json';
 
 export const OrderDetailsPage: React.FC<{
   userState: boolean;

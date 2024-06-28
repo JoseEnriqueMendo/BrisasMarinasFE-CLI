@@ -1,32 +1,25 @@
 import React from 'react';
 import './App.css';
 
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  useLocation,
-  useNavigate,
-  Navigate,
-} from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import { NavBarDefault } from './components/navBar/navBar';
+// import { NavBarDefault } from './components/navBar/navBar';
 import { Home } from './pages/home/home';
-import { ModalLogin } from './components/modals/modals';
-import { Footer } from './components/footer/footer';
-import { Categories } from './components/categories/category';
-import { OrderDetailsPage } from './pages/orderDetails/orderDetail';
+// import { ModalLogin } from './components/modals/modals';
+// import { Footer } from './components/footer/footer';
+// import { Categories } from './components/categories/category';
+// import { OrderDetailsPage } from './pages/orderDetails/orderDetail';
 import { ShoppingCartProvider } from './components/context/ShoppingCartContext';
-import ShoppingCart from './components/shoppingCart/shoppingCart';
-import { History } from './pages/history/history';
+// import ShoppingCart from './components/shoppingCart/shoppingCart';
+// import { History } from './pages/history/history';
 import { FinalizarCompra } from './pages/FinalizarCompra/finalizarCompra';
-import { AdminPage } from './pages/adminPage/AdminPage';
-import { AddBookPage } from './pages/addBookPage/AddBookPage';
-import { EditBookPage } from './pages/editBookPage/EditBookPage';
-import { DetailsBookPage } from './pages/detailsBookPage/DetailsBookPage';
+// import { AdminPage } from './pages/adminPage/AdminPage';
+// import { AddBookPage } from './pages/addBookPage/AddBookPage';
+// import { EditBookPage } from './pages/editBookPage/EditBookPage';
+// import { DetailsBookPage } from './pages/detailsBookPage/DetailsBookPage';
 import userService from './services/user';
-import { UserDetails } from './components/User/User';
+// import { UserDetails } from './components/User/User';
 import { User, UserEdit, UserHistory } from './pages/user/user';
 
 function App() {
@@ -34,15 +27,10 @@ function App() {
 
   const VerifyLoggedIn = async () => {
     const resultVerify = await userService.verify();
-
-    console.log('Login state:' + resultVerify);
-
     resultVerify === true ? setUserLoggedIn(true) : setUserLoggedIn(false);
   };
-
   useEffect(() => {
     VerifyLoggedIn();
-    console.log('estado:', userLoggedIn);
   }, [userLoggedIn]);
 
   return (

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { pedidoHistorial } from '../../entities/pedido';
 import { UserDefault } from '../../entities/User';
 import pedidoService from '../../services/pedido';
@@ -8,7 +7,6 @@ import './tablaPedidos.css';
 
 export const TablaPedidos: React.FC<{}> = () => {
   const [usuario, setusuario] = useState<UserDefault>();
-  const navigate = useNavigate();
   const [history, sethistory] = useState<pedidoHistorial[]>();
   useEffect(() => {
     serviceUsuario();
@@ -17,19 +15,17 @@ export const TablaPedidos: React.FC<{}> = () => {
   const serviceUsuario = async () => {
     const result = await userService.getUser();
     setusuario(result.data);
-    console.log(result);
   };
   const serviceHistory = async () => {
     if (usuario?.id !== null && usuario?.id !== undefined) {
       const result = await pedidoService.listPorUsuario(usuario.id);
       sethistory(result);
-      console.log(result);
     }
-    console.log(usuario?.id);
   };
 
   useEffect(() => {
     serviceHistory();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usuario]);
 
   useEffect(() => {}, [history]);

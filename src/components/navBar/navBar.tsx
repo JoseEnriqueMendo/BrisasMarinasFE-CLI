@@ -8,8 +8,6 @@ import { ModalLogin, ModalRegister } from '../modals/modals';
 
 //Icons
 import { BsPersonCircle, BsCart } from 'react-icons/bs';
-import { BiCalendar } from 'react-icons/bi';
-import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 
 //CSS
 import './navBar.css';
@@ -42,9 +40,9 @@ export const NavBarDefault: React.FC<{
     getProfile();
   }, [userState]);
 
-  const toComprar = () => {
-    navigate('/finalizarCompra');
-  };
+  // const toComprar = () => {
+  //   navigate('/finalizarCompra');
+  // };
 
   return (
     <div className="app-container-navBar-header">

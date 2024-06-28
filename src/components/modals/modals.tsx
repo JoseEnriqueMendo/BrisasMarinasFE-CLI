@@ -1,8 +1,7 @@
-import React from "react";
-import { FormAddBook } from "../form/addBook/AddBookForm";
-import { FormLogin, FormRegister } from "../form/form";
+import React from 'react';
+import { FormLogin, FormRegister } from '../form/form';
 
-import "./modals.css";
+import './modals.css';
 
 export const ModalLogin: React.FC<{
   state: boolean;

@@ -1,19 +1,15 @@
-import React from "react";
-import "./footer.css";
-import { FaCopyright, FaFacebookF } from "react-icons/fa";
-import { BsBook, BsShieldLock, BsInstagram } from "react-icons/bs";
-
-import { FiTwitter, FiYoutube, FiHelpCircle } from "react-icons/fi";
+import React from 'react';
+import './footer.css';
+import { FaCopyright, FaFacebookF } from 'react-icons/fa';
+import { BsBook, BsShieldLock, BsInstagram } from 'react-icons/bs';
+import logo from '../../assets/logo Brisas marinas.png';
+import { FiTwitter, FiYoutube, FiHelpCircle } from 'react-icons/fi';
 export const Footer: React.FC<{}> = ({}) => {
   return (
     <div className="app-main-container-footer">
       <div className="app-container-footer">
         <div className="partFooter partFooter-img1">
-          <img
-            src="https://drive.google.com/uc?export=view&id=1QoVJgFlsNnogzL_iuBPLZB0UA4I0L392"
-            alt="Brisas Marinas Logo"
-            title="Logo Brisas Marinas"
-          />
+          <img src={logo} alt="Brisas Marinas Logo" title="Logo Brisas Marinas" />
         </div>
 
         <div className="partFooter">

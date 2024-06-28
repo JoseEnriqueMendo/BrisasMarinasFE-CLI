@@ -1,14 +1,12 @@
-import React, { useEffect, useState, Fragment } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserDefault } from '../../entities/User';
-import { User } from '../../pages/user/user';
 import userService from '../../services/user';
 import { Button } from '../button/button';
 import { InputDefault } from '../input/input';
 import './User.css';
 
-export const UserDetails: React.FC<{}> = ({}) => {
+export const UserDetails: React.FC<{}> = () => {
   const navigate = useNavigate();
 
   const [Usuario, setUsuario] = useState<UserDefault>();
@@ -87,9 +85,9 @@ export const EditUser: React.FC<{}> = ({}) => {
   const [email, setemail] = useState<string | undefined>('');
   const [emailState, setemailState] = useState(true);
   const [password, setpassword] = useState<string | undefined>('');
-  const [passwordState, setpasswordState] = useState(true);
+  const [passwordState] = useState(true);
   const [idRol, setidRol] = useState<string | undefined>('');
-  const [idRolState, setidRolState] = useState(true);
+  const [idRolState] = useState(true);
   const [lastname, setlastname] = useState<string | undefined>('');
   const [lastnameState, setlastnameState] = useState(true);
   const [phone, setphone] = useState<string | undefined>('');
@@ -126,24 +124,6 @@ export const EditUser: React.FC<{}> = ({}) => {
     getDatos();
   }, [Usuario]);
 
-  const evento = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    if (event.target.value === 'Cliente') {
-      setidRol('CLI');
-    } else {
-      setidRol('ADM');
-    }
-    setidRolState(true);
-  };
-
-  const eventoGenero = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    if (event.target.value === 'Masculino') {
-      setgenero('M');
-    } else {
-      setgenero('F');
-    }
-    setgeneroState(true);
-  };
-
   const EditUser = async () => {
     if (
       nameState === true &&
@@ -163,8 +143,7 @@ export const EditUser: React.FC<{}> = ({}) => {
         lastname !== undefined &&
         id !== undefined
       ) {
-        const result = await userService.edit(name, lastname, email, dni, phone, id);
-        console.log(result);
+        await userService.edit(name, lastname, email, dni, phone, id);
         alert('Edición exitosa');
         navigate('/brisasMarinas/usuario/details');
       }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://brisasmarinasbe.onrender.com';
+const BASE_URL = 'https://t6ty0vc3zj.execute-api.us-east-1.amazonaws.com';
 
 const facturaService = {
   create: async (total: number, fecha: string, id_usuario: number) => {

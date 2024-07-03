@@ -23,7 +23,6 @@ const CartItem = ({ id, quantity }: CartItemProps) => {
   const serviceDishes = async () => {
     const result = await dishesService.list();
     setDisheslist(result);
-    console.log(result);
   };
 
   const item = dishesList?.find((i) => i.id === id);

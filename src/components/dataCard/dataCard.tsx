@@ -20,13 +20,12 @@ export const CategoryCard: React.FC<{}> = () => {
   const serviceCategory = async () => {
     const result = await categoryService.QuantList(6);
     setCategoryList(result);
-    console.log(categoryList);
   };
   return (
     <div className="app-container-map-category-cards">
       {categoryList?.map((data, idx) => (
         <div className="wrapper-card" key={idx}>
-          <div className="category-card" onClick={() => console.log(data.id)}>
+          <div className="category-card">
             <img src={data.image_url} alt="category-data-card" />
             <h3 className="category-tittle">{data.name}</h3>
           </div>
@@ -53,7 +52,6 @@ export const DishesCard: React.FC<{}> = () => {
   const serviceDishes = async () => {
     const result = await dishesService.listQuant(11);
     setDisheslist(result);
-    console.log(result);
   };
 
   return (

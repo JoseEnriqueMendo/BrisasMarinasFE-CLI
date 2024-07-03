@@ -28,12 +28,10 @@ export const FormLogin: React.FC<{
     } else {
       const result = await userService.login(emailValue, passwordValue, 'CLI_FRONTEND');
       if (!result.success) {
-        console.log(result);
         alert(result.message);
       } else {
         localStorage.setItem('token', result.data.token);
         alert('Usuario inició sesión correctamente');
-        console.log(result);
         handleChange(false);
         handleLogin();
         navigate('/brisasMarinas/Usuario');
@@ -159,7 +157,6 @@ export const FormRegister: React.FC<{
         dniValue,
         lastNameValue
       );
-      console.log(result);
       alert('Registro exitoso');
       handleRegister(false);
       handleChange(true);

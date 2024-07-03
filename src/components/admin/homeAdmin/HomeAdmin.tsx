@@ -28,12 +28,10 @@ export const HomeAdmin: React.FC<{}> = () => {
   const [showTaskDialog, setShowTaskDialog] = useState(false);
 
   const confirm = () => {
-    console.log('confirm');
     setShowTaskDialog(false);
   };
 
   const cancel = () => {
-    console.log('cancelar');
     setShowTaskDialog(false);
   };
 

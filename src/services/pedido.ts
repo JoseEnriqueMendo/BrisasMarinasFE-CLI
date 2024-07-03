@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://brisasmarinasbe.onrender.com';
+const BASE_URL = 'https://t6ty0vc3zj.execute-api.us-east-1.amazonaws.com';
 
 const pedidoService = {
   create: async (

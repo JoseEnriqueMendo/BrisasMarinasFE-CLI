@@ -15,7 +15,6 @@ export const UserDetails: React.FC<{}> = () => {
   const serviceUsuario = async () => {
     const result = await userService.getUser();
     setUsuario(result.data);
-    console.log(result.data);
   };
 
   const generoCompleto = () => {
@@ -100,7 +99,6 @@ export const EditUser: React.FC<{}> = ({}) => {
   const serviceUsuario = async () => {
     const result = await userService.getUser();
     setUsuario(result.data);
-    console.log(result.data);
   };
 
   const getDatos = () => {

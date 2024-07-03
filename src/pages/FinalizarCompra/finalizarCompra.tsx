@@ -182,7 +182,7 @@ export const FinalizarCompra: React.FC<{
         <div className="app-container-comprar-tarjeta">
           <div className="app-container-comprar-identificacion">
             <HiIdentification size={20} />
-            <label onClick={() => console.log(cartItems)}>Identificación</label>
+            <label>Identificación</label>
           </div>
           <label>Solicitamos la información necesario para finalizar la compra </label>
           <div className="app-container-form-comprar">

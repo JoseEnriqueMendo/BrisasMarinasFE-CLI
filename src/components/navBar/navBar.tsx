@@ -31,7 +31,6 @@ export const NavBarDefault: React.FC<{
   const getProfile = async () => {
     if (userState === true) {
       const user = await userService.getUser();
-      console.log(user);
       setEmailValue(user.data.email);
     }
   };
@@ -39,10 +38,6 @@ export const NavBarDefault: React.FC<{
   useEffect(() => {
     getProfile();
   }, [userState]);
-
-  // const toComprar = () => {
-  //   navigate('/finalizarCompra');
-  // };
 
   return (
     <div className="app-container-navBar-header">
